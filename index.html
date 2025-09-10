@@ -114,11 +114,18 @@
 
         .hero-content {
             display: flex;
+            flex-direction: column;
+            /* Stacks items vertically */
             align-items: center;
+            /* Centers items horizontally */
             justify-content: center;
-            gap: 60px;
-            text-align: left;
-            flex-wrap: wrap;
+            gap: 30px;
+            /* Reduced gap for vertical stacking */
+        }
+
+        .hero-text {
+            text-align: center;
+            /* Centers all text and the button inside this div */
         }
 
         .profile-pic {
@@ -336,20 +343,24 @@
         <div class="container">
             <div class="hero-content">
                 <img src="megh.jpg" alt="Dr. Megh Raj" class="profile-pic">
-    
+
                 <div class="hero-text">
                     <h1>Dr. Megh Raj</h1>
                     <p class="subtitle">Assistant Professor, Faculty of Law, University of Delhi</p>
                     <p style="margin-bottom: 30px;">
-                        An accomplished academic and legal scholar specializing in Environmental Law, Cyber Laws, and Competition Law, committed to shaping the future of legal education and research.
+                        An accomplished academic and legal scholar specializing in Environmental Law, Cyber Laws, and
+                        Competition Law,
+                        <br/> committed to shaping the future of legal education and research.
                     </p>
                     <a href="#contact" class="cta-button">
-                        <i class="ri-mail-send-line" style="margin-right: 8px; vertical-align: middle;"></i> Get In Touch
+                        <i class="ri-mail-send-line" style="margin-right: 8px; vertical-align: middle;"></i> Get In
+                        Touch
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="biography" class="section">
         <div class="container">
             <h2 class="section-title">Biography</h2>
