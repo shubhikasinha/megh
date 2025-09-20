@@ -129,11 +129,11 @@
         }
 
         .profile-pic {
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             border-radius: 50%;
             object-fit: cover;
-            border: 8px solid #fff;
+            border: 2px solid #fff;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             transition: transform 0.4s ease;
         }
@@ -173,6 +173,7 @@
             gap: 20px;
             margin-bottom: 30px;
             align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -265,21 +266,303 @@
             color: var(--heading-color);
         }
 
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-color);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 70px;
+            text-align: right;
+            width: calc(50% - 30px);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border: 4px solid #fff;
+            border-radius: 50%;
+            top: 20px;
+            box-shadow: 0 0 0 4px var(--accent-color);
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: 1vh;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -2vh;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--heading-color);
+            margin-bottom: 10px;
+            font-family: 'Lora', serif;
+        }
+
+        .timeline-content .duration {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Biography Images */
+        .biography-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .biography-text {
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .biography-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .biography-img {
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            object-fit: cover;
+            width: 100%;
+            aspect-ratio: 4/5;
+        }
+
+        .biography-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .biography-img.large {
+            max-width: 300px;
+        }
+
+        .biography-img.medium {
+            max-width: 250px;
+        }
+
+        .biography-img.small {
+            max-width: 250px;
+        }
+
         /* Publications */
-        .publication-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+        .publications-container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .publication-item:hover {
-            transform: scale(1.02);
+        .publications-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        .publication-item .title {
-            font-weight: bold;
-            font-size: 1.1rem;
+
+        .year-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--accent-color);
+            background: transparent;
+            color: var(--accent-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .publication-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publication-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--heading-color));
+        }
+
+        .publication-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .publication-year {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .publication-journal {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .publication-issn {
+            color: #666;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 15px;
+        }
+
+        .publication-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-ugc {
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .status-peer {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .status-international {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .publication-card.hidden {
+            display: none;
+        }
+
+
+        .publications-stats {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--secondary-bg), #fff);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
         }
 
         /* Footer */
@@ -316,6 +599,35 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-item::before {
+                left: 10px !important;
+                right: auto !important;
+            }
+
+            .biography-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .biography-img.large,
+            .biography-img.medium,
+            .biography-img.small {
+                max-width: 100%;
+                aspect-ratio: 4/5;
+            }
         }
     </style>
 </head>
@@ -330,6 +642,7 @@
                     <li><a href="#biography">Biography</a></li>
                     <li><a href="#expertise">Expertise</a></li>
                     <li><a href="#career">Career</a></li>
+                    <li><a href="#awards">Awards</a></li>
                     <li><a href="#publications">Publications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -342,18 +655,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <img src="megh.jpg" alt="Dr. Megh Raj" class="profile-pic">
+                <img src="meghh.png" alt="Dr. Megh Raj" class="profile-pic">
 
                 <div class="hero-text">
                     <h1>Dr. Megh Raj</h1>
-                    <p class="subtitle">Assistant Professor, Faculty of Law, University of Delhi</p>
+                    <p class="subtitle">Assistant Professor (Senior Scale), Faculty of Law, University of Delhi</p>
                     <p style="margin-bottom: 30px;">
-                        An accomplished academic and legal scholar specializing in Environmental Law, Cyber Laws, and
+                        An accomplished academic and legal scholar with 7 years of teaching experience, specializing in Environmental Law, Cyber Laws, and
                         Competition Law,
                         <br/> committed to shaping the future of legal education and research.
                     </p>
-                    <a href="#contact" class="cta-button">
-                        <i class="ri-mail-send-line" style="margin-right: 8px; vertical-align: middle;"></i> Get In
+                    <a href="#contact" class="cta-button"> Get In
                         Touch
                     </a>
                 </div>
@@ -364,13 +676,23 @@
     <section id="biography" class="section">
         <div class="container">
             <h2 class="section-title">Biography</h2>
-            <p>Dr. [cite_start]Megh Raj has been an Assistant Professor at the Faculty of Law, University of Delhi,
-                since February 2018[cite: 38]. [cite_start]He holds a Ph.D. in Environmental and Natural Resources Law
-                from the same institution[cite: 24]. [cite_start]Before his academic career, he served as an Assistant
-                District Attorney for the Government of Haryana[cite: 36, 40]. [cite_start]Currently, he is an active
-                Member of the Academic Council at the University of Delhi, where he contributes to curriculum
-                development and academic policy-making[cite: 54, 58]. His research is centered on pressing environmental
-                challenges, cyber regulations, and sustainable development.</p>
+            <div class="biography-content">
+                <p class="biography-text">Dr. Megh Raj has been an Assistant Professor (Senior Scale) at the Faculty of Law, University of Delhi,
+                    since February 2018. He holds a Ph.D. in Environmental and Natural Resources Law
+                    from the same institution. Before his academic career, he served as an Assistant
+                    District Attorney for the Government of Haryana. Currently, he is an active
+                    Member of the Academic Council at the University of Delhi, where he contributes to curriculum
+                    development and academic policy-making. His research is centered on pressing environmental
+                    challenges, cyber regulations, and sustainable development.</p>
+                
+                <div class="biography-images">
+                    <img src="img3.jpeg" alt="Dr. Megh Raj - Academic Life" class="biography-img large">
+                    <img src="img2.jpeg" alt="Dr. Megh Raj - Teaching" class="biography-img medium">
+                    <img src="img1.jpeg" alt="Dr. Megh Raj - Research" class="biography-img small">
+                    <img src="img4.jpeg" alt="Dr. Megh Raj - Professional" class="biography-img medium">
+                    <img src="img5.png" alt="Dr. Megh Raj - Achievements" class="biography-img large">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -397,29 +719,67 @@
                 </div>
             </div>
         </div>
+    </section>    <section id="awards" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Associations & Awards</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Life Time Achievement Award</h3>
+                        <span class="duration">September 5, 2023</span>
+                        <p><strong>OBC Commission of Govt. of National Capital Territory of Delhi</strong></p>
+                        <p>Awarded on Teacher's Day for outstanding contributions to education and legal scholarship.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Visionary Education Award</h3>
+                        <span class="duration">September 5, 2023</span>
+                        <p><strong>OBC Commission of Govt. of National Capital Territory of Delhi</strong></p>
+                        <p>Recognized for innovative approaches to legal education and academic excellence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Distinguished Member</h3>
+                        <span class="duration">Current</span>
+                        <p><strong>International Council of Jurist</strong></p>
+                        <p>Recognized as a distinguished member of the international legal community.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Member</h3>
+                        <span class="duration">Current</span>
+                        <p><strong>All India Law Teachers Congress (AILTC), Delhi</strong></p>
+                        <p>Active member of the premier organization for law teachers across India.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Associate Member</h3>
+                        <span class="duration">Current</span>
+                        <p><strong>Indian Society of International Law (ISIL), Bhagwan Das Road, New Delhi</strong></p>
+                        <p>Associate member of the prestigious society dedicated to international law research and practice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="experience" class="section">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Assistant Professor</h3>
-                        <span class="duration">February 2018 – Present</span>
-                        <p><strong>Faculty of Law, University of Delhi</strong></p>
-                        <p>Teaching courses on Environmental Law, Cyber Law, and Company Law. [cite_start]Supervising
-                            research and contributing to academic committees[cite: 29, 34, 38].</p>
-                    </div>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Assistant Professor (Senior Scale)</h3>
+                    <p><strong>Faculty of Law, University of Delhi</strong> (February 2018 – Present)</p>
+                    <p>Teaching courses on Environmental Law, Cyber Law, and Company Law. Supervising research and contributing to academic committees. Currently employed as Assistant Professor (Senior Scale) with 7 years of teaching experience.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Assistant District Attorney</h3>
-                        <span class="duration">August 2017 – February 2018</span>
-                        <p><strong>Government of Haryana</strong></p>
-                        [cite_start]<p>Handled prosecution for the state, provided legal advisory services, and
-                            represented government departments in legal matters[cite: 32, 36, 40].</p>
-                    </div>
+                <div class="card">
+                    <h3>Assistant District Attorney</h3>
+                    <p><strong>Government of Haryana</strong> (August 2017 – February 2018)</p>
+                    <p>Handled prosecution for the state, provided legal advisory services, and represented government departments in legal matters.</p>
                 </div>
             </div>
         </div>
@@ -427,61 +787,189 @@
 
     <section id="education" class="section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Ph.D. in Law</h3>
-                    [cite_start]<p><strong>Faculty of Law, University of Delhi</strong> (2014-2021) [cite: 24]</p>
-                    <p>Specialized in Environmental and Natural Resources Law.</p>
+            <h2 class="section-title">Educational Qualifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Ph.D. in Law</h3>
+                        <span class="duration">2021</span>
+                        <p><strong>Faculty of Law, University of Delhi, New Delhi</strong></p>
+                        <p>Specialized in Environmental and Natural Resources Law.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>LL.M. (Master of Laws)</h3>
-                    [cite_start]<p><strong>Faculty of Law, University of Delhi</strong> (2012-2014) [cite: 24]</p>
-                    <p>Completed the two-year postgraduate law degree.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Qualified Senior Research Fellowship</h3>
+                        <span class="duration">2016</span>
+                        <p><strong>University Grant Commission</strong></p>
+                        <p>Recognized research fellowship for advanced studies.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>LL.B. (Bachelor of Laws)</h3>
-                    [cite_start]<p><strong>Campus Law Centre, University of Delhi</strong> (2008-2011) [cite: 24]</p>
-                    <p>Graduated from the prestigious three-year law course.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Diploma on United Nations and International Understanding</h3>
+                        <span class="duration">2016</span>
+                        <p><strong>Institute of UN Studies</strong></p>
+                        <p>Specialized training in international relations and UN systems.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>B.Sc. (Non-Medical)</h3>
-                    <p><strong>M.D. [cite_start]University, Rohtak</strong> (2004-2007) [cite: 24]</p>
-                    <p>Built a strong foundation in analytical and logical reasoning.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Qualified Junior Research Fellowship</h3>
+                        <span class="duration">Dec. 2012, June 2013, Dec. 2013</span>
+                        <p><strong>University Grant Commission</strong></p>
+                        <p>Multiple research fellowship qualifications for academic excellence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>LL.M. (Two Year)</h3>
+                        <span class="duration">2012-2014</span>
+                        <p><strong>Faculty of Law, University of Delhi, New Delhi</strong></p>
+                        <p>Completed the two-year postgraduate law degree.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>LL.B. (3-year Course)</h3>
+                        <span class="duration">2008-2011</span>
+                        <p><strong>Campus Law Centre, Faculty of Law, University of Delhi, New Delhi</strong></p>
+                        <p>Graduated from the prestigious three-year law course.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B.Sc. (Non-Medical)</h3>
+                        <span class="duration">2004-2007</span>
+                        <p><strong>Govt. P.G. College Narnaul, Maharishi Dayanand University, Rohtak</strong></p>
+                        <p>Built a strong foundation in analytical and logical reasoning.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <section id="publications" class="section">
         <div class="container">
-            <h2 class="section-title">Selected Publications</h2>
-            <div class="publication-list">
-                <ul>
-                    <li>
-                        <strong>Legal framework to regulate sand mining for facilitating sustainable
-                            development</strong>
-                        <span class="journal">Global Thought, Vol. [cite_start]3 (2017) [cite: 73]</span>
-                    </li>
-                    <li>
-                        <strong>A critical analysis of National Green Tribunal of India</strong>
-                        <span class="journal">Global Thought, Vol. [cite_start]3 (2017) [cite: 68]</span>
-                    </li>
-                    <li>
-                        <strong>Ground water depletion in India: Legal framework and challenges</strong>
-                        <span class="journal">Asian Journal of Advance Studies, Vol. [cite_start]2 (2016) [cite:
-                            68]</span>
-                    </li>
-                    <li>
-                        <strong>Restriction to freedom of press in India</strong>
-                        <span class="journal">Global Journal for legal Studies, Vol. [cite_start]4 (2015) [cite:
-                            68]</span>
-                    </li>
-                    <li>
-                        <strong>Sex trafficking in India: Prospects and challenges</strong>
-                        <span class="journal">Society and Politics, Vol. [cite_start]5 (2015) [cite: 68]</span>
-                    </li>
-                </ul>
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-container">
+                <div class="publications-stats">
+                    <h3>Research Impact</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">11</span>
+                            <div class="stat-label">Total Publications</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <div class="stat-label">UGC Care Approved</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <div class="stat-label">International Journals</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10</span>
+                            <div class="stat-label">Years of Research</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="year-filter">
+                    <button class="filter-btn active" data-year="all">All Years</button>
+                    <button class="filter-btn" data-year="2024">2024</button>
+                    <button class="filter-btn" data-year="2023">2023</button>
+                    <button class="filter-btn" data-year="2017">2017</button>
+                    <button class="filter-btn" data-year="2016">2016</button>
+                    <button class="filter-btn" data-year="2015">2015</button>
+                    <button class="filter-btn" data-year="2014">2014</button>
+                </div>
+
+                <div class="publications-grid" id="publicationsGrid">
+                    <div class="publication-card" data-year="2024" data-title="Environmental Impact Assessment" data-journal="Journal of Oriental Institute">
+                        <div class="publication-year">2024</div>
+                        <div class="publication-title">Environmental Impact Assessment (EIA) in India: Balancing Development and Sustainability under the Amended EIA notification, 2020</div>
+                        <div class="publication-journal">Journal of Oriental Institute</div>
+                        <div class="publication-issn">ISSN: 0030-5324</div>
+                        <span class="publication-status status-ugc">UGC Care Approved, Group 1</span>
+                    </div>
+
+                    <div class="publication-card" data-year="2024" data-title="Environmental and Corporate Liability" data-journal="Annals of the Bhandarkar Oriental Research Institute">
+                        <div class="publication-year">2024</div>
+                        <div class="publication-title">The Intersection of Environmental and Corporate Liability: Analyzing the Legal Framework on Industrial Pollution in India</div>
+                        <div class="publication-journal">Annals of the Bhandarkar Oriental Research Institute</div>
+                        <div class="publication-issn">ISSN: 0378-1143</div>
+                        <span class="publication-status status-ugc">UGC-CARE List Group 1</span>
+                    </div>
+
+                    <div class="publication-card" data-year="2024" data-title="Cyber Criminal Justice System" data-journal="Indraprastha Technology Law Journal">
+                        <div class="publication-year">2024</div>
+                        <div class="publication-title">The Crisis of the Cyber Criminal Justice System in Redressing Cyber Crimes against Women in India</div>
+                        <div class="publication-journal">Indraprastha Technology Law Journal, Vol. 12</div>
+                        <div class="publication-issn">ISSN: 2394-1839</div>
+                        <span class="publication-status status-peer">Peer Reviewed Journal</span>
+                    </div>
+
+                    <div class="publication-card" data-year="2023" data-title="Sand Mining Regulation" data-journal="National Open University of Nigeria Law Journal">
+                        <div class="publication-year">2023</div>
+                        <div class="publication-title">The Paradigm Shift in Regulation of Sand Mining in India: Changing Approach from source of Revenue to the Protection of Environment</div>
+                        <div class="publication-journal">National Open University of Nigeria Law Journal (NJL)</div>
+                        <div class="publication-issn">ISSN: 2449-0202</div>
+                        <span class="publication-status status-international">International Journal</span>
+                    </div>
+
+                    <div class="publication-card" data-year="2017" data-title="Sand Mining Legal Framework" data-journal="Global Thought">
+                        <div class="publication-year">2017</div>
+                        <div class="publication-title">Legal framework to regulate sand mining for facilitating sustainable development</div>
+                        <div class="publication-journal">Global Thought, Vol. 3 (2017)</div>
+                        <div class="publication-issn">ISSN: 2456-0898</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2017" data-title="Light Pollution Regulation" data-journal="Ad Valorem Journal of Law">
+                        <div class="publication-year">2017</div>
+                        <div class="publication-title">Regulation to light pollution in India: A need of hour</div>
+                        <div class="publication-journal">Ad Valorem Journal of Law, Vol. 4 (2017)</div>
+                        <div class="publication-issn">ISSN: 2348-5485</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2017" data-title="National Green Tribunal Analysis" data-journal="Global Thought">
+                        <div class="publication-year">2017</div>
+                        <div class="publication-title">A critical analysis of National Green Tribunal of India</div>
+                        <div class="publication-journal">Global Thought, Vol. 3 (2017)</div>
+                        <div class="publication-issn">ISSN: 2456-0898</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2016" data-title="Ground Water Depletion" data-journal="Asian Journal of Advance Studies">
+                        <div class="publication-year">2016</div>
+                        <div class="publication-title">Ground water depletion in India: Legal framework and challenges</div>
+                        <div class="publication-journal">Asian Journal of Advance Studies, Vol. 2 (2016)</div>
+                        <div class="publication-issn">ISSN: 2395-4965</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2015" data-title="Sex Trafficking in India" data-journal="Society and Politics">
+                        <div class="publication-year">2015</div>
+                        <div class="publication-title">Sex trafficking in India: Prospects and challenges</div>
+                        <div class="publication-journal">Society and Politics, Vol. 5 (2015)</div>
+                        <div class="publication-issn">ISSN: 2248-9479</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2015" data-title="Freedom of Press Restrictions" data-journal="Global Journal for legal Studies">
+                        <div class="publication-year">2015</div>
+                        <div class="publication-title">Restriction to freedom of press in India</div>
+                        <div class="publication-journal">Global Journal for legal Studies, Vol. 4 (2015)</div>
+                        <div class="publication-issn">ISSN: 2277-7296</div>
+                    </div>
+
+                    <div class="publication-card" data-year="2014" data-title="Combating Sex Trafficking" data-journal="Sambhavya Research Journal">
+                        <div class="publication-year">2014</div>
+                        <div class="publication-title">Combating sex trafficking: A legal perspective with special reference to India</div>
+                        <div class="publication-journal">Sambhavya: An International Research Journal of Indian Cultural, Social and Educational Stream, Volume 17-18 (2014)</div>
+                        <div class="publication-issn">ISSN: 0976-9358</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -506,18 +994,26 @@
                 <p style="margin:8px 0; font-size:1.1rem;">
                     <i class="ri-mail-line" style="margin-right:8px;"></i>
                     <a href="mailto:mraj@lc1.du.ac.in"
-                        style="color:#ffcc80; text-decoration:none;">mraj@lc1.du.ac.in</a>
+                        style="color:white; text-decoration:none;">mraj@lc1.du.ac.in</a>
                 </p>
                 <p style="margin:8px 0; font-size:1.1rem;">
                     <i class="ri-phone-line" style="margin-right:8px;"></i>
-                    <a href="tel:+911127667483" style="color:#ffcc80; text-decoration:none;">+91-11-27667483</a>
+                    <a href="tel:+911127667483" style="color:white; text-decoration:none;">+91-11-27667483</a>
+                </p>
+                <p style="margin:8px 0; font-size:1.1rem;">
+                    <i class="ri-user-line" style="margin-right:8px;"></i>
+                    <a href="https://orcid.org/0000-0002-6351-7897" target="_blank" style="color:white; text-decoration:none;">ORCID</a>
+                </p>
+                <p style="margin:8px 0; font-size:1.1rem;">
+                    <i class="ri-graduation-cap-line" style="margin-right:8px;"></i>
+                    <a href="https://people.samarth.edu.in/index.php/profile/user/index/DU/fp" target="_blank" style="color:white; text-decoration:none;">University Profile</a>
                 </p>
                 <div style="margin-top:15px;">
-                    <a href="#" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
-                            class="ri-global-line"></i></a>
-                    <a href="#" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
+                    <a href="https://www.instagram.com/meghrajcobra?igsh=MWQwMWtmYnZ3dHNzYg%3D%3D" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
+                            class="ri-instagram-fill"></i></a>
+                    <a href="https://www.linkedin.com/in/dr-megh-raj-55b81b58?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
                             class="ri-linkedin-box-fill"></i></a>
-                    <a href="#" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
+                    <a href="https://www.facebook.com/megh.raj.142?mibextid=ZbWKwL" style="margin:0 8px; color:#fff; font-size:1.5rem; transition:color 0.3s;"><i
                             class="ri-facebook-circle-fill"></i></a>
                 </div>
             </div>
@@ -551,6 +1047,61 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.main-header');
             header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Publications interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const publicationCards = document.querySelectorAll('.publication-card');
+            let currentFilter = 'all';
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Update current filter
+                    currentFilter = this.getAttribute('data-year');
+                    filterPublications();
+                });
+            });
+
+            function filterPublications() {
+                publicationCards.forEach(card => {
+                    const year = card.getAttribute('data-year');
+                    const matchesYear = currentFilter === 'all' || year === currentFilter;
+
+                    if (matchesYear) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Add animation to cards on load
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            publicationCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
         });
     </script>
 </body>
